@@ -1,0 +1,78 @@
+<div class="h-screen overflow-hidden">
+  <slider-component>
+    <ul
+      id="wrap-slider-{{ section.id }}"
+      role="list"
+    >
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {% when 'slide' %}
+            <li
+              id="slide-item-{{ section.id }}-{{ forloop.index }}"
+              style="background-color: {{ block.settings.bg_color | default: 'transparent' }};"
+              class="relative h-full grid__item{% if block.settings.product.featured_image == nil %} collection-list__item--no-media{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.product != blank %}
+                {{ block.settings.product.featured_image | image_url: width: 2048 | image_tag }}
+              {% endif %}
+              <h3 class="absolute top-1/2 text-[90px]">
+                {{ block.settings.product.title }}
+              </h3>
+              <a href="{{ block.settings.product.url }}" title="{{ block.settings.product.title }}">Shop now</a>
+            </li>
+        {% endcase %}
+      {%- endfor -%}
+    </ul>
+  </slider-component>
+  <slide-show />
+</div>
+{% schema %}
+{
+  "name": "Carousel",
+  "tag": "section",
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ],
+  "locales": {
+    "en": {
+      "title": "Slideshow"
+    },
+    "fr": {
+      "title": "Diaporama"
+    }
+  },
+  "templates": [
+    "index"
+  ]
+}
+{% endschema %}

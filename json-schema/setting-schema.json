@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "InputSettingType": {
+      "enum": [
+        "article",
+        "blog",
+        "checkbox",
+        "collection",
+        "collection_list",
+        "color",
+        "color_background",
+        "font_picker",
+        "html",
+        "image_picker",
+        "link_list",
+        "liquid",
+        "number",
+        "page",
+        "product",
+        "product_list",
+        "radio",
+        "range",
+        "richtext",
+        "select",
+        "text",
+        "textarea",
+        "url",
+        "video_url"
+      ],
+      "type": "string"
+    },
+    "SidebarSettingType": {
+      "enum": ["header", "paragraph"],
+      "type": "string"
+    }
+  },
+  "items": {
+    "additionalProperties": {},
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "settings": {
+        "items": {
+          "anyOf": [
+            {
+              "properties": {
+                "default": {},
+                "id": {
+                  "type": "string"
+                },
+                "info": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "type": {
+                  "$ref": "#/definitions/InputSettingType"
+                }
+              },
+              "type": "object"
+            },
+            {
+              "properties": {
+                "content": {
+                  "type": "string"
+                },
+                "type": {
+                  "$ref": "#/definitions/SidebarSettingType"
+                }
+              },
+              "type": "object"
+            }
+          ]
+        },
+        "type": "array"
+      }
+    },
+    "type": "object"
+  },
+  "type": "array"
+}

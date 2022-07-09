@@ -1,0 +1,182 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "InputSettingType": {
+      "enum": [
+        "article",
+        "blog",
+        "checkbox",
+        "collection",
+        "collection_list",
+        "color",
+        "color_background",
+        "font_picker",
+        "html",
+        "image_picker",
+        "link_list",
+        "liquid",
+        "number",
+        "page",
+        "product",
+        "product_list",
+        "radio",
+        "range",
+        "richtext",
+        "select",
+        "text",
+        "textarea",
+        "url",
+        "video_url"
+      ],
+      "type": "string"
+    },
+    "SidebarSettingType": {
+      "enum": ["header", "paragraph"],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "blocks": {
+      "items": {
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "settings": {
+            "items": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "default": {},
+                    "id": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "$ref": "#/definitions/InputSettingType"
+                    }
+                  },
+                  "type": "object"
+                },
+                {
+                  "properties": {
+                    "content": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "$ref": "#/definitions/SidebarSettingType"
+                    }
+                  },
+                  "type": "object"
+                }
+              ]
+            },
+            "type": "array"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "class": {
+      "type": "string"
+    },
+    "default": {},
+    "limit": {
+      "type": "number"
+    },
+    "locales": {},
+    "max_blocks": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "presets": {
+      "items": {
+        "properties": {
+          "blocks": {
+            "items": {
+              "additionalProperties": {},
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "settings": {
+            "additionalProperties": {},
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "settings": {
+      "items": {
+        "properties": {
+          "default": {},
+          "id": {
+            "type": "string"
+          },
+          "info": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/definitions/InputSettingType"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "templates": {
+      "items": {
+        "enum": [
+          "404",
+          "article",
+          "blog",
+          "cart",
+          "collection",
+          "customers/account",
+          "customers/activate_account",
+          "customers/addresses",
+          "customers/login",
+          "customers/order",
+          "customers/register",
+          "customers/reset_password",
+          "gift_card",
+          "index",
+          "list-collections",
+          "page",
+          "password",
+          "policy",
+          "product",
+          "search"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,35 @@
+<div class="container">
+  <a href="{{ routes.root_url }}"> Logo </a>
+
+  {% render 'layout-menu' %}
+
+  <div>
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <a href="{{ routes.account_url }}">
+          {{ 'customer.account.title' | t }}
+        </a>
+        {{ 'customer.log_out' | t | customer_logout_link }}
+      {% else %}
+        {{ 'customer.log_in' | t | customer_login_link }}
+        {{ 'customer.register.title' | t | customer_register_link }}
+      {% endif %}
+    {% endif %}
+
+    <a href="{{ routes.cart_url }}">
+      {{ 'general.cart.view' | t: count: cart.item_count }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.header.settings.paragraph"
+    }
+  ]
+}
+{% endschema %}

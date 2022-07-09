@@ -1,0 +1,35 @@
+{
+  "name": "kosi",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev:store": "cd shopify && shopify theme serve",
+    "format": "prettier --write .",
+    "generate:schema:template": "typescript-json-schema ./src/types/template.ts TemplateSchema -o json-schema/template.json",
+    "generate:schema:setting-schema": "typescript-json-schema ./src/types/setting-schema.ts SettingSchema -o json-schema/setting-schema.json",
+    "generate:schema:section-schema": "typescript-json-schema ./src/types/section-schema.ts SectionSchema -o json-schema/section-schema.json",
+    "generate": "concurrently \"yarn:generate:*\"",
+    "dev:css": "npx tailwindcss -i src/css/application.css -o shopify/assets/application.css.liquid --watch",
+    "build:css": "npx tailwindcss build src/css/application.css -o shopify/assets/application.css.liquid",
+    "dev:section": "node ./scripts/watch-schema.js",
+    "dev:js": "rollup -c -w",
+    "build:js": "rollup -c",
+    "build": "concurrently \"yarn:build:*\"",
+    "dev": "concurrently \"yarn:dev:*\""
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@shopify/prettier-plugin-liquid": "^0.1.4",
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.2.2",
+    "node-watch": "^0.7.3",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "rollup": "^2.76.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tailwindcss": "^3.1.4",
+    "typescript-json-schema": "0.54.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "shopifyLiquid.formatterDevPreview": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["shopify/templates/**/*.json"],
+      "url": "./json-schema/template.json"
+    },
+    {
+      "fileMatch": ["shopify/config/settings_schema.json"],
+      "url": "./json-schema/setting-schema.json"
+    },
+    {
+      "fileMatch": ["sections-schema/**/*.json"],
+      "url": "./json-schema/section-schema.json"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+root: shopify
+
+MatchingTranslations:
+  enabled: false
+TemplateLength:
+  enabled: false
